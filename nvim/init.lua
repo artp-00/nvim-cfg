@@ -1,3 +1,4 @@
+vim.cmd([[set termguicolors]])
 require("config.lazy")
 
 ---------- TABS ----------
@@ -19,7 +20,6 @@ vim.opt.signcolumn = 'yes'
 -- vim.cmd([[colorscheme lackluster-dark]])
 -- vim.cmd([[colorscheme vague]])
 vim.cmd([[colorscheme everforest]])
-vim.cmd([[set termguicolors]])
 
 ---------- SETTINGS ----------
 vim.cmd([[set cc=80]]) -- vertical line at 80 characters
