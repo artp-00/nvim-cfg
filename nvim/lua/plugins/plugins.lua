@@ -123,8 +123,8 @@ return
 
     -------------- VISUALS -------------- 
 
-    { "beauwilliams/statusline.lua" },
-    --{ "nvim-lualine/lualine.nvim", opts = {} },
+    -- { "beauwilliams/statusline.lua" },
+    { "nvim-lualine/lualine.nvim", opts = {} },
     { "sontungexpt/stcursorword", opts = {} },
     {
         "echasnovski/mini.indentscope",
