@@ -13,17 +13,24 @@ vim.o.undofile = true
 ---------- LINE NUMBER ----------
 vim.wo.number = true
 vim.opt.signcolumn = 'yes'
--- vim.wo.relativenumber = true
+vim.wo.relativenumber = true
 
 
 ---------- COLORSCHEME ----------
+-- vim.cmd([[colorscheme nord]])
+-- vim.cmd([[colorscheme ethereal]])
+-- vim.cmd([[colorscheme aurora]])
+-- vim.cmd([[colorscheme lackluster]])
 -- vim.cmd([[colorscheme lackluster-dark]])
--- vim.cmd([[colorscheme vague]])
-vim.cmd([[colorscheme everforest]])
+-- vim.cmd([[colorscheme kanagawa-paper]])
+-- vim.cmd([[colorscheme grail]])
+-- vim.cmd([[colorscheme melting]])
+-- vim.cmd([[colorscheme everforest]])
+vim.cmd([[colorscheme vague]])
 
 ---------- SETTINGS ----------
 vim.cmd([[set cc=80]]) -- vertical line at 80 characters
-vim.cmd([[set so=6]]) -- cursor padding
+vim.cmd([[set so=50]]) -- cursor padding
 
 ---------- NVIM TREE ----------
 vim.keymap.set('n', '<C-t>', require'nvim-tree.api'.tree.open)

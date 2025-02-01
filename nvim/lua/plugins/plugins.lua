@@ -103,7 +103,6 @@ return
     -------------- COLORSCHEME -------------- 
 
     { "nvim-treesitter/nvim-treesitter", opts = {} },
-    { "folke/tokyonight.nvim", opts = {} },
     { "sainnhe/everforest" },
     { "gbprod/nord.nvim", opts = {} },
     { "presindent/ethereal.nvim", opts = {} },
@@ -134,8 +133,8 @@ return
             draw = { delay = 10, animation = function() return 0 end },
             options = { border = "top", try_as_border = true },
             -- symbol = "▏",
-            symbol = '¦',
-            -- symbol = '‖',
+            -- symbol = '¦',
+            symbol = '‖',
         },
         config = function(_, opts)
             require("mini.indentscope").setup(opts)
