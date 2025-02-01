@@ -17,9 +17,11 @@ vim.opt.signcolumn = 'yes'
 
 
 ---------- COLORSCHEME ----------
--- vim.cmd([[colorscheme lackluster-dark]])
 -- vim.cmd([[colorscheme vague]])
-vim.cmd([[colorscheme everforest]])
+-- vim.cmd([[colorscheme grail]])
+-- vim.cmd([[colorscheme nord]])
+-- vim.cmd([[colorscheme everforest]])
+vim.cmd([[colorscheme kanagawa-paper]])
 
 ---------- SETTINGS ----------
 vim.cmd([[set cc=80]]) -- vertical line at 80 characters
@@ -39,18 +41,6 @@ require("telescope").setup {
             hidden = true,
         }
     },
-  -- extensions = {
-  --   repo = {
-  --     list = {
-  --       fd_opts = {
-  --         "--no-ignore-vcs",
-  --       },
-  --       search_dirs = {
-  --         "~/config/nvim",
-  --       },
-  --     },
-  --   },
-  -- },
 }
 
 local builtin = require('telescope.builtin')
@@ -59,32 +49,6 @@ vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files'
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
--- vim.keymap.set('n', '<leader>fp', require'telescope'.extensions.repo.list{})
--- vim.keymap.set('n', '<leader>fp', vim.cmd([[Telescope repo list]]))
--- require'telescope'.load_extension'repo'
-
----------- LSPCONFIG ----------
-require'lspconfig'.pylyzer.setup{}
-require'lspconfig'.denols.setup{}
-require'lspconfig'.denols.setup{}
-
-require'lspconfig'.clangd.setup({
-  cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
-  init_options = {
-    fallbackFlags = { '-std=c++17' },
-  },
-})
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-  end,
-})
 
 ---------- TREESITTER ----------
 require'nvim-treesitter.configs'.setup {
@@ -124,55 +88,4 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
   -- modules = {},
-  -- warning est normal
 }
-
----------- NEOCROLL ----------
-require('neoscroll').setup({
-    mappings = {                 -- Keys to be mapped to their corresponding default scrolling animation
-        '<C-u>', '<C-d>',
-        -- '<C-b>', '<C-f>',
-        -- '<C-y>', '<C-e>',
-        -- 'zt', 'zz', 'zb',
-    },
-    hide_cursor = true,          -- Hide cursor while scrolling
-    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-    duration_multiplier = 0.5,   -- Global duration multiplier
-    easing = 'linear',           -- Default easing function
-    pre_hook = nil,              -- Function to run before the scrolling animation starts
-    post_hook = nil,             -- Function to run after the scrolling animation ends
-    performance_mode = false,    -- Disable "Performance Mode" on all buffers.
-    ignored_events = {           -- Events ignored while scrolling
-        'WinScrolled', 'CursorMoved'
-    },
-})
-
----------- COLOR PICKER ----------
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set("n", "<C-c>", "<cmd>PickColor<cr>", opts)
-vim.keymap.set("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
-
--- vim.keymap.set("n", "your_keymap", "<cmd>ConvertHEXandRGB<cr>", opts)
--- vim.keymap.set("n", "your_keymap", "<cmd>ConvertHEXandHSL<cr>", opts)
-
-require("color-picker").setup({ -- for changing icons & mappings
-	-- ["icons"] = { "ﱢ", "" },
-	-- ["icons"] = { "ﮊ", "" },
-	-- ["icons"] = { "", "ﰕ" },
-	-- ["icons"] = { "", "" },
-	-- ["icons"] = { "", "" },
-	["icons"] = { "ﱢ", "" },
-	["border"] = "rounded", -- none | single | double | rounded | solid | shadow
-	["keymap"] = { -- mapping example:
-		["U"] = "<Plug>ColorPickerSlider5Decrease",
-		["O"] = "<Plug>ColorPickerSlider5Increase",
-	},
-	["background_highlight_group"] = "Normal", -- default
-	["border_highlight_group"] = "FloatBorder", -- default
-  ["text_highlight_group"] = "Normal", --default
-})
-
-vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
