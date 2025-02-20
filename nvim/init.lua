@@ -7,6 +7,15 @@ vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 
+---------- TRANSPARENCY ----------
+-- vim.cmd([[
+-- augroup TransparentBackground
+-- autocmd!
+-- autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
+-- autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
+-- augroup END
+-- ]])
+
 ---------- PERSISTENT UNDO ----------
 vim.o.undofile = true
 
@@ -34,11 +43,11 @@ vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
 
 ---------- TELESCOPE ----------
 require("telescope").setup {
-    pickers = {
-        find_files = {
-            hidden = true,
-        }
-    },
+    -- pickers = {
+    --     find_files = {
+    --         hidden = true,
+    --     }
+    -- },
   -- extensions = {
   --   repo = {
   --     list = {
@@ -66,7 +75,13 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 ---------- LSPCONFIG ----------
 require'lspconfig'.pylyzer.setup{}
 require'lspconfig'.denols.setup{}
-require'lspconfig'.denols.setup{}
+
+-- require'lspconfig'.jdtls.setup{}
+-- local config = {
+--     cmd = { vim.fn.expand('~/.local/share/nvim/mason/bin/jdtls') },
+--     root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+-- }
+-- require('jdtls').start_or_attach(config)
 
 require'lspconfig'.clangd.setup({
   cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
@@ -89,7 +104,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 ---------- TREESITTER ----------
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "java" },
   modules = {},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
