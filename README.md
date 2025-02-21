@@ -11,3 +11,4 @@ dependencies:
 dependencies(heavyweight):
     bear
     clangd
+    golang

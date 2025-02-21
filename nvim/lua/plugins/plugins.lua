@@ -180,4 +180,15 @@ return
         end
     },
     --{ "folke/which-key.nvim", opts = {} },
+
+
+    -------------- TIMETRACKER -------------- 
+    {
+    "ptdewey/pendulum-nvim",
+    config = function()
+        require("pendulum").setup({
+            gen_reports = true,
+        })
+    end,
+    },
 }
