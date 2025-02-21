@@ -37,7 +37,6 @@ vim.cmd([[set so=6]]) -- cursor padding
 ---------- NVIM TREE ----------
 vim.keymap.set('n', '<C-t>', require'nvim-tree.api'.tree.open)
 vim.keymap.set('n', '<C-b>', require'nvim-tree.api'.tree.toggle)
-vim.keymap.set('n', '<C-Tab>', require'nvim-tree.api'.tree.toggle)
 
 ---------- UNDO TREE ----------
 vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
