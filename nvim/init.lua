@@ -39,6 +39,7 @@ vim.opt.signcolumn = 'yes'
             'pyright',
             -- 'hls',
             'lua_ls',
+            'cmake',
         }
     })
 
@@ -77,6 +78,9 @@ vim.opt.signcolumn = 'yes'
     require('lspconfig').clangd.setup {
     }
     require('lspconfig').pyright.setup {
+    }
+    require('lspconfig').cmake.setup {
+        { "cmake", "txt" }
     }
 
     -- require('lua-language-server').lua_ls.setup {
