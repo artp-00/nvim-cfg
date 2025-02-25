@@ -60,6 +60,11 @@ require("telescope").setup {
   --     },
   --   },
   -- },
+  defaults = {
+    file_ignore_patterns = {
+        "build",
+    }
+  }
 }
 
 local builtin = require('telescope.builtin')
@@ -98,9 +103,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<A-CR>', vim.lsp.buf.code_action, opts)
+    -- vim.keymap.set('n', '<A-CR>', vim.lsp.buf.code_action, opts)
   end,
 })
+vim.keymap.set('n', '<A-CR>', require("fastaction").code_action, opts)
 
 ---------- TREESITTER ----------
 require'nvim-treesitter.configs'.setup {

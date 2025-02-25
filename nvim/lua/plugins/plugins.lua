@@ -42,6 +42,11 @@ return
             end
         end
     },
+    {
+        'Chaitanyabsprip/fastaction.nvim',
+        ---@type FastActionConfig
+        opts = {},
+    },
 
     -------------- AUTOCOMPLETION -------------- 
 
