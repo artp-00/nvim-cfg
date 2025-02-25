@@ -37,6 +37,11 @@ return {
 
     { "mfussenegger/nvim-jdtls" },
     { "kylechui/nvim-surround", opts = {} },
+    {
+        'Chaitanyabsprip/fastaction.nvim',
+        ---@type FastActionConfig
+        opts = {},
+    },
     -- { "monkoose/parsley" },
     -- { "monkoose/nvlime" },
     {

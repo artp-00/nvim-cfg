@@ -5,6 +5,7 @@ vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a T
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.wo.number = true
+
 vim.opt.signcolumn = 'yes'
     -- vim.wo.relativenumber = true
 
@@ -49,9 +50,9 @@ vim.opt.signcolumn = 'yes'
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set('n', '<A-CR>', vim.lsp.buf.code_action, opts)
         end,
     })
+    vim.keymap.set('n', '<A-CR>', require("fastaction").code_action, opts)
 
     local cmp = require'cmp'
     cmp.setup {
