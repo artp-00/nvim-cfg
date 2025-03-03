@@ -200,39 +200,41 @@ require("color-picker").setup({ -- for changing icons & mappings
 vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
 
 ---------- TIME TRACKING ----------
-require('pendulum').setup({
-    log_file = vim.fn.expand("~/.config/nvim/.time_tracking.csv"),
-    timeout_len = 300,  -- 5 minutes
-    timer_len = 60,     -- 1 minute
-    gen_reports = false, -- Enable report generation (requires Go)
-    top_n = 25,         -- Include top 25 entries in the report
-    report_section_excludes = {
-        "branch",       -- Hide `branch` section of the report
-        -- Other options includes:
-        "directory",
-        -- "filetype",
-        "file",
-        -- "project",
-    },
-    report_excludes = {
-        filetype = {
-            -- This table controls what to be excluded from `filetype` section
-            -- "neo-tree", -- Exclude neo-tree filetype
-        },
-        file = {
-            -- This table controls what to be excluded from `file` section
-            -- "test.py",  -- Exclude any test.py
-            -- ".*.go",    -- Exclude all Go files
-        },
-        project = {
-            -- This table controls what to be excluded from `project` section
-            -- "unknown_project" -- Exclude unknown (non-git) projects
-        },
-        directory = {
-            -- This table controls what to be excluded from `directory` section
-        },
-        branch = {
-            -- This table controls what to be excluded from `branch` section
-        },
-    },
-})
+-- Incredibly slow plugin for no reason
+
+-- require('pendulum').setup({
+--     log_file = vim.fn.expand("~/.config/nvim/.time_tracking.csv"),
+--     timeout_len = 300,  -- 5 minutes
+--     timer_len = 60,     -- 1 minute
+--     gen_reports = false, -- Enable report generation (requires Go)
+--     top_n = 25,         -- Include top 25 entries in the report
+--     report_section_excludes = {
+--         "branch",       -- Hide `branch` section of the report
+--         -- Other options includes:
+--         "directory",
+--         -- "filetype",
+--         "file",
+--         -- "project",
+--     },
+--     report_excludes = {
+--         filetype = {
+--             -- This table controls what to be excluded from `filetype` section
+--             -- "neo-tree", -- Exclude neo-tree filetype
+--         },
+--         file = {
+--             -- This table controls what to be excluded from `file` section
+--             -- "test.py",  -- Exclude any test.py
+--             -- ".*.go",    -- Exclude all Go files
+--         },
+--         project = {
+--             -- This table controls what to be excluded from `project` section
+--             -- "unknown_project" -- Exclude unknown (non-git) projects
+--         },
+--         directory = {
+--             -- This table controls what to be excluded from `directory` section
+--         },
+--         branch = {
+--             -- This table controls what to be excluded from `branch` section
+--         },
+--     },
+-- })
