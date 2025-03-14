@@ -78,7 +78,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 -- require'telescope'.load_extension'repo'
 
 ---------- LSPCONFIG ----------
-require'lspconfig'.pylyzer.setup{}
+-- require'lspconfig'.pylyzer.setup{}
 require'lspconfig'.denols.setup{}
 
 -- require'lspconfig'.jdtls.setup{}
@@ -176,28 +176,29 @@ local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<C-c>", "<cmd>PickColor<cr>", opts)
 vim.keymap.set("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
+-- require'plenary'.profile()
 
 -- vim.keymap.set("n", "your_keymap", "<cmd>ConvertHEXandRGB<cr>", opts)
 -- vim.keymap.set("n", "your_keymap", "<cmd>ConvertHEXandHSL<cr>", opts)
 
-require("color-picker").setup({ -- for changing icons & mappings
-	-- ["icons"] = { "ﱢ", "" },
-	-- ["icons"] = { "ﮊ", "" },
-	-- ["icons"] = { "", "ﰕ" },
-	-- ["icons"] = { "", "" },
-	-- ["icons"] = { "", "" },
-	["icons"] = { "ﱢ", "" },
-	["border"] = "rounded", -- none | single | double | rounded | solid | shadow
-	["keymap"] = { -- mapping example:
-		["U"] = "<Plug>ColorPickerSlider5Decrease",
-		["O"] = "<Plug>ColorPickerSlider5Increase",
-	},
-	["background_highlight_group"] = "Normal", -- default
-	["border_highlight_group"] = "FloatBorder", -- default
-  ["text_highlight_group"] = "Normal", --default
-})
-
-vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
+-- require("color-picker").setup({ -- for changing icons & mappings
+-- 	-- ["icons"] = { "ﱢ", "" },
+-- 	-- ["icons"] = { "ﮊ", "" },
+-- 	-- ["icons"] = { "", "ﰕ" },
+-- 	-- ["icons"] = { "", "" },
+-- 	-- ["icons"] = { "", "" },
+-- 	["icons"] = { "ﱢ", "" },
+-- 	["border"] = "rounded", -- none | single | double | rounded | solid | shadow
+-- 	["keymap"] = { -- mapping example:
+-- 		["U"] = "<Plug>ColorPickerSlider5Decrease",
+-- 		["O"] = "<Plug>ColorPickerSlider5Increase",
+-- 	},
+-- 	["background_highlight_group"] = "Normal", -- default
+-- 	["border_highlight_group"] = "FloatBorder", -- default
+--   ["text_highlight_group"] = "Normal", --default
+-- })
+--
+-- vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
 
 ---------- TIME TRACKING ----------
 -- Incredibly slow plugin for no reason

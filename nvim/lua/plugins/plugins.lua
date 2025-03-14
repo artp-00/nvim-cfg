@@ -123,7 +123,7 @@ return
 
     { "kylechui/nvim-surround", opts = {} },
     { "numToStr/Comment.nvim", opts = {} },
-    { "ziontee113/color-picker.nvim", opts = {} },
+    -- { "ziontee113/color-picker.nvim", opts = {} },
     { "mbbill/undotree" },
     { "m4xshen/autoclose.nvim", opts = {} },
 
@@ -188,12 +188,12 @@ return
 
 
     -------------- TIMETRACKER -------------- 
-    {
-    "ptdewey/pendulum-nvim",
-    config = function()
-        require("pendulum").setup({
-            gen_reports = true,
-        })
-    end,
-    },
+    -- {
+    -- "ptdewey/pendulum-nvim",
+    -- config = function()
+    --     require("pendulum").setup({
+    --         gen_reports = true,
+    --     })
+    -- end,
+    -- },
 }
