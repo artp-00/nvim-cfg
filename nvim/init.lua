@@ -31,10 +31,9 @@ vim.opt.signcolumn = 'yes'
 -- vim.wo.relativenumber = true
 
 ---------- COLORSCHEME ----------
-vim.cmd([[colorscheme vague]])
 -- vim.cmd([[colorscheme grail]])
 -- vim.cmd([[colorscheme nord]])
--- vim.cmd([[colorscheme everforest]])
+vim.cmd([[colorscheme everforest]])
 -- vim.cmd([[colorscheme kanagawa-paper]])
 
 ---------- SETTINGS ----------
@@ -82,41 +81,42 @@ vim.keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:lis
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.signatureHelp = nil
 
-vim.lsp.enable('pyright')
-vim.lsp.config('pyright', {
-    capabilities = capabilities,
-    -- on_attach = function(client, bufnr)
-    --     client.server_capabilities.signatureHelpProvider = nil
-    -- end,
-    -- on_attach = function(client, bufnr)
-    --     require'lsp_signature'.on_attach({}, bufnr)
-    -- end,
+-- vim.lsp.enable('pyright')
+-- vim.lsp.config('pyright', {
+--     capabilities = capabilities,
+--     -- on_attach = function(client, bufnr)
+--     --     client.server_capabilities.signatureHelpProvider = nil
+--     -- end,
+--     -- on_attach = function(client, bufnr)
+--     --     require'lsp_signature'.on_attach({}, bufnr)
+--     -- end,
 
-    cmd = { "pyright-langserver", "--stdio" },
-    filetypes = { "python" },
-    settings = {
-        python = {
-            analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                typeCheckingMode = "off",
-                diagnosticMode = 'openFilesOnly',
-            }
-        }
-    }
-})
+--     cmd = { "pyright-langserver", "--stdio" },
+--     filetypes = { "python" },
+--     settings = {
+--         python = {
+--             analysis = {
+--                 autoSearchPaths = true,
+--                 useLibraryCodeForTypes = true,
+--                 typeCheckingMode = "off",
+--                 diagnosticMode = 'openFilesOnly',
+--             }
+--         }
+--     }
+-- })
 
-vim.lsp.enable('ruff')
-vim.lsp.config('ruff', {
-    filetypes = { "python" },
-    init_options = {
-        settings = {
-            -- Any extra CLI arguments for `ruff` go here.
-            args = {
-            },
-        }
-    }
-})
+-- vim.lsp.enable('ruff')
+-- vim.lsp.config('ruff', {
+--     filetypes = { "python" },
+--     init_options = {
+--         settings = {
+--             -- Any extra CLI arguments for `ruff` go here.
+--             args = {
+--             },
+--         }
+--     }
+-- })
+
 vim.lsp.enable('typescript-language-server')
 vim.lsp.config("ts_ls", {
         filetypes = {
@@ -140,22 +140,17 @@ vim.lsp.config("ts_ls", {
         root_markers = {'.git', 'package.json'},
         cmd = { "typescript-language-server", "--stdio" },
       })
--- vim.lsp.enable('vue-language-server')
--- vim.lsp.config['vue_ls'] = {
---   -- Command and arguments to start the server.
---   cmd = { 'vue-language-server' },
---   -- Filetypes to automatically attach to.
---   filetypes = { 'vue' },
---   -- Sets the "workspace" to the directory where any of these files is found.
---   -- Files that share a root directory will reuse the LSP server connection.
---   -- Nested lists indicate equal priority, see |vim.lsp.Config|.
---   root_markers = { { 'package.json' }, '.git' },
---   -- Specific settings to send to the server. The schema is server-defined.
---   -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
---   settings = {
---   }
--- }
-vim.lsp.enable('lua-language-server')
+
+
+vim.lsp.enable('rnix')
+vim.lsp.config['rnix'] = {
+  -- cmd = { 'lua-language-server' },
+  filetypes = { 'nix' },
+  root_markers = { '.git' },
+  settings = {},
+}
+
+vim.lsp.enable('lua_ls')
 vim.lsp.config['lua_ls'] = {
   -- Command and arguments to start the server.
   cmd = { 'lua-language-server' },
@@ -175,6 +170,22 @@ vim.lsp.config['lua_ls'] = {
     }
   }
 }
+
+vim.lsp.enable('bashls')
+vim.lsp.config['bashls'] = {
+  -- Filetypes to automatically attach to.
+  filetypes = { 'bash', 'sh' },
+  -- Sets the "workspace" to the directory where any of these files is found.
+  -- Files that share a root directory will reuse the LSP server connection.
+  -- Nested lists indicate equal priority, see |vim.lsp.Config|.
+  root_markers = { '.git' },
+  -- Specific settings to send to the server. The schema is server-defined.
+  -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+  settings = {
+  }
+}
+
+
 
 -- require("dap-python").setup("uv")
 local dap = require('dap')
@@ -262,7 +273,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
-require('lualine').setup({})
+-- require('lualine').setup({})
 
 ---------- TREESITTER ----------
 require'nvim-treesitter.configs'.setup {
@@ -378,3 +389,10 @@ require'treesitter-context'.setup{
 }
 
 require("luasnip").config.setup({ enable_autosnippets = true })
+
+require('statusline').setup({
+    match_colorscheme = true, -- Enable colorscheme inheritance (Default: false)
+    tabline = true, -- Enable the tabline (Default: true)
+    lsp_diagnostics = true, -- Enable Native LSP diagnostics (Default: true)
+    ale_diagnostics = false, -- Enable ALE diagnostics (Default: false)
+})

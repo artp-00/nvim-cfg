@@ -205,9 +205,13 @@ return
     { "sontungexpt/stcursorword", opts = {} },
     {'nvim-tree/nvim-web-devicons'},
     {'nanozuki/tabby.nvim'},
+    -- {
+    --     'nvim-lualine/lualine.nvim',
+    --     dependencies = { 'nvim-tree/nvim-web-devicons' }
+    -- },
     {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
+        'beauwilliams/statusline.lua',
+        dependencies = { 'nvim-tree/nvim-web-devicons', 'nvim-lua/lsp-status.nvim' }
     },
     {'nvim-treesitter/nvim-treesitter-context'},
     {
@@ -239,8 +243,7 @@ return
             opts = {}, -- global options for the cmdline. See section on views
             ---@type table<string, CmdlineFormat>
             format = {
-              -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
-              -- view: (default is cmdline view)
+              -- conceal:: (default is cmdline view)
               -- opts: any options passed to the view
               -- icon_hl_group: optional hl_group for the icon
               -- title: set to anything or empty string to hide
@@ -391,7 +394,7 @@ return
           markdown = {
             hover = {
               ["|(%S-)|"] = vim.cmd.help, -- vim help links
-              ["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
+	      -- ["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
             },
             highlights = {
               ["|%S-|"] = "@text.reference",
@@ -451,4 +454,5 @@ return
             require'alpha'.setup(require'themes.theta_custom'.config)
         end
     },
+    {"typicode/bg.nvim"},
 }
