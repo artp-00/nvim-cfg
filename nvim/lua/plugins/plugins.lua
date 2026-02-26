@@ -455,4 +455,5 @@ return
         end
     },
     {"typicode/bg.nvim"},
+    {"yuukiflow/Arduino-Nvim"},
 }

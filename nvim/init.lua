@@ -5,14 +5,6 @@ vim.g.loaded_netrwPlugin = 1
 
 require("config.lazy")
 
-vim.keymap.set("x", "A", function()
-  return ":'<,'>normal! A"
-end, { expr = true, silent = true })
-
-vim.keymap.set("x", "I", function()
-  return ":'<,'>normal! I"
-end, { expr = true, silent = true })
-
 ---------- TABS ----------
 vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
@@ -149,6 +141,14 @@ vim.lsp.config['rnix'] = {
   root_markers = { '.git' },
   settings = {},
 }
+
+vim.lsp.enable('arduino')
+vim.lsp.config['arduino'] = {
+  -- cmd = { 'lua-language-server' },
+  filetypes = { 'ino' },
+  settings = {},
+}
+
 
 vim.lsp.enable('lua_ls')
 vim.lsp.config['lua_ls'] = {
