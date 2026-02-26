@@ -12,3 +12,8 @@ dependencies(heavyweight):
     bear
     clangd
     golang
+
+    
+========   ARCHIVED    ========
+
+This repository has been archived because I switched to nixos and transfered all configuration to a private nixos repository.
